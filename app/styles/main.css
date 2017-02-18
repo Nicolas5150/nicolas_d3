@@ -2,12 +2,20 @@
 
 html, body, .block{
 	font-family: "Ubuntu", sans-serif;
-	font-size: 100%;
+	font-size: 105%;
 	background: black;
 	width: 100%;
 	height: 101%;
 	color: white;
 	line-height: 180%;
+}
+
+nav .brand-logo{
+	color: #ddffff;
+}
+
+.tabs.tabs-transparent .tab a.active{
+	color: #ee4488;
 }
 
 #terminal {
@@ -64,7 +72,8 @@ html, body, .block{
     font-weight: bold;
 }
 
-#web {
+/* Flexbox styling for the arcs - for different screen sizes */
+#web, #frameworks, #engineering, #software {
 	/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
 		display: -webkit-box;
 	  display: -moz-box;
@@ -72,15 +81,106 @@ html, body, .block{
 	  display: -webkit-flex;
 	  display: flex;
 
-	  -webkit-flex-flow: row wrap;
+	  -webkit-flex-flow: wrap;
 	  justify-content: space-around;
 		flex-wrap: wrap;
+
+}
+
+/* Template Image Section */
+.portfolio_piece {
+  border-left: 1px solid rgba(128,128,128,0.05);
+  border-right: 1px solid rgba(128,128,128,0.05);
+  display: inline-block;
+  padding-bottom: 2%;
+  text-align: center;
+  width: 100%;
+  line-height: 150%;
+  padding-left: 1%;
+  padding-right: 1%;
+  vertical-align: text-top;
+  height: 525px;
+}
+
+.portfolio_piece::-webkit-scrollbar {
+    /* Remove scrollbar space */
+    width: 0px;
+}
+
+.portfolio_piece .left_date {
+  float: left;
+  color: #8b430e;
+}
+
+.portfolio_piece .right_live {
+  float: right;
+  color: #8b430e;
+}
+
+.portfolio_piece .created_with {
+  font-size: 12px;
+}
+
+.portfolio_piece:hover {
+  background-color: rgba(71,71,71,0.05);
+}
+
+.portfolio_piece p{
+  text-align: left;
+  word-wrap: break-word;
+}
+
+.portfolio_title h3 {
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 250%;
+}
+
+.portfolio_title img {
+  height: 30%;
+  width: 75%;
+	max-width: 1000px;
+	background-color: #fff;
+    box-shadow:
+        0 0 5px 3px #fff,  /* inner white */
+        0 0 10px 6px #443366, /* middle magenta */
+        0 0 15px 9px #ffccdd; /* outer cyan */
+}
+
+#circleBar-mobile-group{
+	width: 30%;
+}
+
+#circleBar-web-text,
+#circleBar-mobile-text{
+    font-family: 'FranklinGothic-Book' "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+    font-size:16px;
+    fill:#000;
+}
+#circleBar-web-labels tspan,
+#circleBar-mobile-labels tspan {
+    font-family: 'FranklinGothic-Book' "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+    font-size:10px;
+    fill:#6D6E71;
+}
+
+#circleBar-web-values tspan,
+#circleBar-mobile-values tspan {
+    font-family: 'FranklinGothic-Book' "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+    font-size: 9px;
+    font-weight:bold;
+    fill:#000;
+}
+#circleBar-web-values tspan {
+    fill: #ee4488;
+}
+#circleBar-mobile-values tspan {
+    fill: #44eeee;
 }
 
 
 @media (max-width: 1050px) {
-	#terminal {
-	  width: 90%;
-		margin-top: 2%;
+	html, body, .block{
+		font-size: 95%;
 	}
 }

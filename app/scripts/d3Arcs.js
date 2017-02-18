@@ -1,104 +1,140 @@
-// Starting arc code comes from - https://codepen.io/rogerxu/pen/rLqvd
-// Call each arc that needs to be created
-createArc('html', 'HTML', 1);
-createArc('css', 'CSS', .85);
-createArc('javascript', 'JavaScript', .90);
-
-// Do onclick events for other tabs.
-
-function createArc(spanName, arcName, arcVal) {
+// Global color vars
 var colors = {
-    'pink': '#E1499A',
-    'yellow': '#f0ff08',
-    'green': '#47e495',
-    'blue' : '#2B6A6D'
+    'pink': '#ee4488',
+    'yarn': '#552244',
+    'purple': '#443366',
+    'blue' : '#44eeee',
+    'yellow': '#ffffde',
+    'pastele': '#ffccdd'
 };
 
-var color = colors.blue;
+// flags for colorPicked, only do animation on first click.
+var frameworksFlag = false;
+var engineeringFlag = false;
+var softwareFlag = false;
 
-// Grab the span tag's id to eventually append to.
-var span = 'span#' + spanName;
+// Starting arc code comes from - https://codepen.io/rogerxu/pen/rLqvd
+// Call each arc that needs to be created
+createArc('html', 'HTML', 1, colors.blue);
+createArc('css', 'CSS', .85, colors.blue);
+createArc('javascript', 'JavaScript', .90, colors.blue);
+createArc('php', 'PHP', .90, colors.blue);
 
-var radius = 100;
-var border = 5;
-var padding = 50;
-var startPercent = 0;
-var endPercent = arcVal;
-
-
-var twoPi = Math.PI * 2;
-var boxSize = (radius + padding) * 2;
-
-
-var count = Math.abs((endPercent - startPercent) / 0.01);
-var step = endPercent < startPercent ? -0.01 : 0.01;
-
-var arc = d3.svg.arc()
-    .startAngle(0)
-    .innerRadius(radius)
-    .outerRadius(radius - border);
-
-var parent = d3.select(span);
-
-var svg = parent.append('svg')
-    .attr('width', boxSize)
-    .attr('height', boxSize);
-
-var defs = svg.append('defs');
-
-var filter = defs.append('filter')
-    .attr('id', 'blur');
-
-filter.append('feGaussianBlur')
-    .attr('in', 'SourceGraphic')
-    .attr('stdDeviation', '7');
-
-var g = svg.append('g')
-    .attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
-
-var meter = g.append('g')
-    .attr('class', 'progress-meter');
-
-meter.append('path')
-    .attr('class', 'background')
-    .attr('fill', '#ccc')
-    .attr('fill-opacity', 0.5)
-    .attr('d', arc.endAngle(twoPi));
-
-var foreground = meter.append('path')
-    .attr('class', 'foreground')
-    .attr('fill', color)
-    .attr('fill-opacity', 1)
-    .attr('stroke', color)
-    .attr('stroke-width', 5)
-    .attr('stroke-opacity', 1)
-    .attr('filter', 'url(#blur)');
-
-var front = meter.append('path')
-    .attr('class', 'foreground')
-    .attr('fill', color)
-    .attr('fill-opacity', 1);
-
-var numberText = meter.append('text')
-    .attr('fill', '#fff')
-    .attr('text-anchor', 'middle')
-    .attr('dy', '.35em');
-
-function updateProgress(progress) {
-    foreground.attr('d', arc.endAngle(twoPi * progress));
-    front.attr('d', arc.endAngle(twoPi * progress));
-    numberText.text(arcName);
+// Do onclick events for other tabs.
+function frameworks() {
+  if (!frameworksFlag) {
+    createArc('materialize', 'Materialize', .90, colors.blue);
+    createArc('google_maps', 'Google API', .80, colors.blue);
+    frameworksFlag = true;
+  }
 }
 
-var progress = startPercent;
+function engineering() {
+  if (!engineeringFlag) {
+    createArc('c', 'C', .95, colors.blue);
+    createArc('java', 'Java', .80, colors.blue);
+    engineeringFlag = true;
+  }
+}
 
-(function loops() {
-    updateProgress(progress);
+function software() {
+  if (!softwareFlag) {
+    createArc('photoshop', 'Photoshop', 1, colors.blue);
+    createArc('adobe_xd', 'Adobe XD', .80, colors.blue);
+    createArc('premier_pro', 'Premier Pro', .80, colors.blue);
+    createArc('sketch', 'Sketch', .85, colors.blue);
+    createArc('maya', 'Maya', .70, colors.blue);
+    softwareFlag = true;
+  }
+}
 
-    if (count > 0) {
-        count--;
-        progress += step;
-        setTimeout(loops, 10);
-    }
-})();
+
+function createArc(spanName, arcName, arcVal, colorPicked) {
+  var color = colorPicked;
+
+  // Grab the span tag's id to eventually append to.
+  var span = 'span#' + spanName;
+
+  var radius = 100;
+  var border = 5;
+  var padding = 50;
+  var startPercent = 0;
+  var endPercent = arcVal;
+
+
+  var twoPi = Math.PI * 2;
+  var boxSize = (radius + padding) * 2;
+
+
+  var count = Math.abs((endPercent - startPercent) / 0.01);
+  var step = endPercent < startPercent ? -0.01 : 0.01;
+
+  var arc = d3.svg.arc()
+      .startAngle(0)
+      .innerRadius(radius)
+      .outerRadius(radius - border);
+
+  var parent = d3.select(span);
+
+  var svg = parent.append('svg')
+      .attr('width', boxSize)
+      .attr('height', boxSize);
+
+  var defs = svg.append('defs');
+
+  var filter = defs.append('filter')
+      .attr('id', 'blur');
+
+  filter.append('feGaussianBlur')
+      .attr('in', 'SourceGraphic')
+      .attr('stdDeviation', '7');
+
+  var g = svg.append('g')
+      .attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
+
+  var meter = g.append('g')
+      .attr('class', 'progress-meter');
+
+  meter.append('path')
+      .attr('class', 'background')
+      .attr('fill', '#ccc')
+      .attr('fill-opacity', 0.5)
+      .attr('d', arc.endAngle(twoPi));
+
+  var foreground = meter.append('path')
+      .attr('class', 'foreground')
+      .attr('fill', color)
+      .attr('fill-opacity', 1)
+      .attr('stroke', color)
+      .attr('stroke-width', 5)
+      .attr('stroke-opacity', 1)
+      .attr('filter', 'url(#blur)');
+
+  var front = meter.append('path')
+      .attr('class', 'foreground')
+      .attr('fill', color)
+      .attr('fill-opacity', 1);
+
+  var numberText = meter.append('text')
+      .attr('fill', '#fff')
+      .attr('text-anchor', 'middle')
+      .attr('dy', '.35em');
+
+  function updateProgress(progress) {
+      foreground.attr('d', arc.endAngle(twoPi * progress));
+      front.attr('d', arc.endAngle(twoPi * progress));
+      numberText.text(arcName);
+  }
+
+  var progress = startPercent;
+
+  (function loops() {
+      updateProgress(progress);
+
+      if (count > 0) {
+          count--;
+          progress += step;
+          setTimeout(loops, 10);
+      }
+  })();
 }
