@@ -1,27 +1,27 @@
 // http://codepen.io/frankieali4/pen/GIhtd
 var chartData = {
     'barCircleMobile':[
-        {'index':1.3, 'value':6, 'fill':'#44eeee', 'label':'Technical Support'},
-        {'index':1.1, 'value':5, 'fill':'#56efef', 'label':'iOS Training'},
-        {'index':0.9, 'value':4, 'fill':'#69f1f1', 'label':'iTunes Support'},
-        {'index':0.7, 'value':3,  'fill':'#7cf3f3', 'label':'Account Security'},
-        {'index':0.5, 'value':2,  'fill':'#8ef4f4', 'label':'Time Managment'},
-        {'index':0.3, 'value':1,  'fill':'#a1f6f6', 'label':'Mac OSX Support'}
+        {'index':1.3, 'value':6, 'fill':'#44eeee', 'label':'Mac OSX Support'},
+        {'index':1.1, 'value':5, 'fill':'#56efef', 'label':'Time Managment'},
+        {'index':0.9, 'value':4, 'fill':'#69f1f1', 'label':'Account Security'},
+        {'index':0.7, 'value':3,  'fill':'#7cf3f3', 'label':'iTunes Support'},
+        {'index':0.5, 'value':2,  'fill':'#8ef4f4', 'label':'iOS Training'},
+        {'index':0.3, 'value':1,  'fill':'#a1f6f6', 'label':'Technical Support'}
     ],
+
     'barCircleWeb':[
-        {'index':0.3, 'value':31588490, 'fill':'#231F20', 'label':'WebMD Health'},
-        {'index':0.4, 'value':26260662, 'fill':'#403437', 'label':'Everyday Health'},
-        {'index':0.5, 'value':24263463, 'fill':'#53363C', 'label':'Livestrong.com'},
-        {'index':0.6, 'value':12795112, 'fill':'#5E2C3A', 'label':'About.com Health Section'},
-        {'index':0.7, 'value':11959167, 'fill':'#660E34', 'label':'Healthline'},
-        {'index':0.8, 'value':10408917, 'fill':'#7D3A4D', 'label':'HealthGrades'},
-        {'index':0.9, 'value':10317462, 'fill':'#96606B', 'label':'Yahoo! Health'},
-        {'index':1,   'value':9765589,  'fill':'#B28A91', 'label':'Lifescript.com'},
-        {'index':1.1, 'value':7734964,  'fill':'#D3BCBF', 'label':'Health.com'},
-        {'index':1.2, 'value':7504000 , 'fill':'#EDE4E5', 'label':'Drugs.com'}
+      {'index':1.3, 'value':6, 'fill':'#44eeee', 'label':'Illustrator'},
+      {'index':1.1, 'value':5, 'fill':'#56efef', 'label':'Style Guides'},
+      {'index':0.9, 'value':4, 'fill':'#69f1f1', 'label':'Mood Boards'},
+      {'index':0.7, 'value':3,  'fill':'#7cf3f3', 'label':'Photoshop'},
+      {'index':0.5, 'value':2,  'fill':'#8ef4f4', 'label':'Research'},
+      {'index':0.3, 'value':1,  'fill':'#a1f6f6', 'label':'Digital Designing'}
     ]
 };
- // .3 .5 .7 .9 1.1 1.3
+
+// flags for job picked, only do animation on first click.
+var appleFlag = false;
+
 function drawBarCircleChart(data,target,values,labels){
     var w = 362,
         h = 362,
@@ -80,9 +80,14 @@ function drawBarCircleChart(data,target,values,labels){
 }
 
 // Animation Queue
-setTimeout(function(){drawBarCircleChart(chartData.barCircleWeb,'#circleBar-web-chart','#circleBar-web-values','#circleBar-web-labels')},500);
-setTimeout(function(){drawBarCircleChart(chartData.barCircleMobile,'#circleBar-mobile-chart','#circleBar-mobile-values','#circleBar-mobile-labels')},800);
+drawBarCircleChart(chartData.barCircleWeb,'#circleBar-web-chart','#circleBar-web-values','#circleBar-web-labels');
 
+function apple() {
+  if (!appleFlag) {
+    drawBarCircleChart(chartData.barCircleMobile,'#circleBar-mobile-chart','#circleBar-mobile-values','#circleBar-mobile-labels');
+    appleFlag = true;
+  }
+}
 d3.select('#circleBar-web-icon')
     .transition()
     .delay(500)

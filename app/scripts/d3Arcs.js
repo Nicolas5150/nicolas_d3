@@ -57,7 +57,7 @@ function createArc(spanName, arcName, arcVal, colorPicked) {
 
   var radius = 100;
   var border = 5;
-  var padding = 50;
+  var padding = 15;
   var startPercent = 0;
   var endPercent = arcVal;
 
