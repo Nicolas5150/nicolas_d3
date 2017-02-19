@@ -1,11 +1,12 @@
-@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,500);
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 html, body, .block{
-	font-family: "Ubuntu", sans-serif;
+	font-family: 'Roboto', sans-serif;
 	font-size: 105%;
 	background: black;
 	width: 100%;
 	height: 105%;
+	min-height: 105%;
 	color: white;
 	line-height: 180%;
 }
@@ -60,7 +61,7 @@ nav .brand-logo{
 
 
 .progress-meter text {
-    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 24px;
     font-weight: bold;
 }
@@ -134,35 +135,35 @@ nav .brand-logo{
 }
 
 
-#circleBar-web-text,
-#circleBar-mobile-text{
-    font-family: 'FranklinGothic-Book' "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
-    font-size:16px;
+/* Jobs Circle Bar */
+#spiral-universal-text,
+#spiral-apple-text{
+    font-family: 'Roboto', sans-serif;
     fill:#000;
 }
-#circleBar-web-labels tspan,
-#circleBar-mobile-labels tspan {
-    font-family: 'FranklinGothic-Book' "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
-    font-size:10px;
+#spiral-universal-labels tspan,
+#spiral-apple-labels tspan {
+    font-family: 'Roboto', sans-serif;
     fill:white;
 }
 
-#circleBar-web-values tspan,
-#circleBar-mobile-values tspan {
-    font-family: 'FranklinGothic-Book' "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+#spiral-universal-values tspan,
+#spiral-apple-values tspan {
+    font-family: 'Roboto', sans-serif;
     font-size: 9px;
     font-weight:bold;
     fill:#000;
 }
-#circleBar-web-values tspan {
+#spiral-universal-values tspan {
     fill: #ee4488;
 }
-#circleBar-mobile-values tspan {
+#spiral-apple-values tspan {
     fill: #ee4488;
 }
 
+
 /* Resolves issue where the flexbox styling does not return after being sized up */
-@media (min-width: 900px) {
+@media (min-width: 901px) {
 	/* Flexbox styling for the arcs - for different screen sizes */
 	#web, #frameworks, #engineering, #software {
 		/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
@@ -180,7 +181,7 @@ nav .brand-logo{
 			white-space: normal;
 	}
 
-	.circleBarCharts {
+	.spiralCharts {
 		transform:scale(1.0);
 		-webkit-transform:scale(1.0);
 	}
@@ -198,11 +199,11 @@ nav .brand-logo{
 	#web, #frameworks, #engineering, #software {
 		/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
 		  display: inline;
-			overflow: auto;
+			overflow: scroll;
     	white-space: nowrap;
 		}
 
-	.circleBarCharts {
+	.spiralCharts {
 		transform:scale(0.8);
 		-webkit-transform:scale(0.8);
 	}
@@ -212,8 +213,9 @@ nav .brand-logo{
 	}
 }
 
+/* smallest screens */
 @media (max-width: 568px) {
-	.circleBarCharts {
+	.spiralCharts {
 		transform:scale(0.6);
 		-webkit-transform:scale(0.6);
 	}

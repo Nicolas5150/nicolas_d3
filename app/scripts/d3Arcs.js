@@ -1,3 +1,4 @@
+// Starting arc code comes from - https://codepen.io/rogerxu/pen/rLqvd
 // Global color vars
 var colors = {
     'pink': '#ee4488',
@@ -9,16 +10,33 @@ var colors = {
 };
 
 // flags for colorPicked, only do animation on first click.
+var webFlag = false;
 var frameworksFlag = false;
 var engineeringFlag = false;
 var softwareFlag = false;
 
-// Starting arc code comes from - https://codepen.io/rogerxu/pen/rLqvd
-// Call each arc that needs to be created
-createArc('html', 'HTML', 1, colors.blue);
-createArc('css', 'CSS', .85, colors.blue);
-createArc('javascript', 'JavaScript', .90, colors.blue);
-createArc('php', 'PHP', .90, colors.blue);
+// Call each arc that needs to be created, first is called when in view, rest by click.
+// Also including listner for the d3Spiral.js (for work - at Universal).
+//http://materializecss.com/scrollfire.html
+var options = [
+      {selector: '#two', offset: 700, callback: function(el) {
+        web();
+      } },
+      {selector: '#three', offset: 700, callback: function(el) {
+        universal();
+      } }
+    ];
+ Materialize.scrollFire(options);
+
+function web() {
+  if (!webFlag) {
+    createArc('html', 'HTML', 1, colors.blue);
+    createArc('css', 'CSS', .85, colors.blue);
+    createArc('javascript', 'JavaScript', .90, colors.blue);
+    createArc('php', 'PHP', .90, colors.blue);
+    webFlag = true;
+    }
+}
 
 // Do onclick events for other tabs.
 function frameworks() {

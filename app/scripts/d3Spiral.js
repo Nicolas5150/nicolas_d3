@@ -1,15 +1,15 @@
 // http://codepen.io/frankieali4/pen/GIhtd
-var chartData = {
-    'barCircleMobile':[
+var spiralDataSets = {
+    'appleInfo':[
         {'index':1.3, 'value':6, 'fill':'#44eeee', 'label':'Mac OSX Support'},
-        {'index':1.1, 'value':5, 'fill':'#56efef', 'label':'Time Managment'},
-        {'index':0.9, 'value':4, 'fill':'#69f1f1', 'label':'Account Security'},
+        {'index':1.1, 'value':5, 'fill':'#56efef', 'label':'Time Managing'},
+        {'index':0.9, 'value':4, 'fill':'#69f1f1', 'label':'iOS Security'},
         {'index':0.7, 'value':3,  'fill':'#7cf3f3', 'label':'iTunes Support'},
         {'index':0.5, 'value':2,  'fill':'#8ef4f4', 'label':'iOS Training'},
         {'index':0.3, 'value':1,  'fill':'#a1f6f6', 'label':'Technical Support'}
     ],
 
-    'barCircleWeb':[
+    'universalInfo':[
       {'index':1.3, 'value':6, 'fill':'#44eeee', 'label':'Illustrator'},
       {'index':1.1, 'value':5, 'fill':'#56efef', 'label':'Style Guides'},
       {'index':0.9, 'value':4, 'fill':'#69f1f1', 'label':'Mood Boards'},
@@ -20,9 +20,10 @@ var chartData = {
 };
 
 // flags for job picked, only do animation on first click.
+var universalFlag = false;
 var appleFlag = false;
 
-function drawBarCircleChart(data,target,values,labels){
+function createSpiral(data,target,values,labels){
     var w = 362,
         h = 362,
         size = data[0].value * 1.15,
@@ -79,43 +80,50 @@ function drawBarCircleChart(data,target,values,labels){
     }
 }
 
-// Animation Queue
-drawBarCircleChart(chartData.barCircleWeb,'#circleBar-web-chart','#circleBar-web-values','#circleBar-web-labels');
+// Call each arc that needs to be created, first is called when in view, rest by click.
+ function universal() {
+   if (!universalFlag) {
+     createSpiral(spiralDataSets.universalInfo,'#spiral-universal-chart','#spiral-universal-values','#spiral-universal-labels');
+     universalFlag = true;
+   }
+ }
 
 function apple() {
   if (!appleFlag) {
-    drawBarCircleChart(chartData.barCircleMobile,'#circleBar-mobile-chart','#circleBar-mobile-values','#circleBar-mobile-labels');
+    createSpiral(spiralDataSets.appleInfo,'#spiral-apple-chart','#spiral-apple-values','#spiral-apple-labels');
     appleFlag = true;
   }
 }
-d3.select('#circleBar-web-icon')
+
+// Animation Queue
+d3.select('#spiral-universal-icon')
     .transition()
     .delay(500)
     .duration(500)
     .attr('opacity','1');
-d3.select('#circleBar-web-text')
+d3.select('#spiral-universal-text')
     .transition()
     .delay(750)
     .duration(500)
     .attr('opacity','1');
 
-d3.select('#circleBar-web-clipLabels')
+d3.select('#spiral-universal-clipLabels')
     .transition()
     .delay(600)
     .duration(1250)
     .attr('height','150');
 
-d3.select('#circleBar-mobile-icon')
+d3.select('#spiral-apple-icon')
     .transition()
     .delay(800)
     .duration(500)
     .attr('opacity','1');
-d3.select('#circleBar-mobile-text')
+d3.select('#spiral-apple-text')
     .transition()
     .delay(1050)
     .duration(500)
     .attr('opacity','1');
-d3.select('#circleBar-mobile-clipLabels')
+d3.select('#spiral-apple-clipLabels')
     .transition()
     .delay(900)
     .duration(1250)
