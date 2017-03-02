@@ -30,7 +30,7 @@ var options = [
 
 function web() {
   if (!webFlag) {
-    createArc('html', 'HTML', 1, colors.blue);
+    createArc('html', 'HTML', .90, colors.blue);
     createArc('css', 'CSS', .85, colors.blue);
     createArc('javascript', 'JavaScript', .90, colors.blue);
     createArc('php', 'PHP', .90, colors.blue);
@@ -49,7 +49,7 @@ function frameworks() {
 
 function engineering() {
   if (!engineeringFlag) {
-    createArc('c', 'C', .95, colors.blue);
+    createArc('c', 'C', .90, colors.blue);
     createArc('java', 'Java', .80, colors.blue);
     engineeringFlag = true;
   }
@@ -57,7 +57,7 @@ function engineering() {
 
 function software() {
   if (!softwareFlag) {
-    createArc('photoshop', 'Photoshop', 1, colors.blue);
+    createArc('photoshop', 'Photoshop', .90, colors.blue);
     createArc('adobe_xd', 'Adobe XD', .80, colors.blue);
     createArc('premier_pro', 'Premier Pro', .80, colors.blue);
     createArc('sketch', 'Sketch', .85, colors.blue);

@@ -47,7 +47,7 @@ Materialize.scrollFire(options);
 
 function web() {
     if (!webFlag) {
-        createArc('html', 'HTML', 1, colors.blue);
+        createArc('html', 'HTML', .90, colors.blue);
         createArc('css', 'CSS', .85, colors.blue);
         createArc('javascript', 'JavaScript', .90, colors.blue);
         createArc('php', 'PHP', .90, colors.blue);
@@ -66,7 +66,7 @@ function frameworks() {
 
 function engineering() {
     if (!engineeringFlag) {
-        createArc('c', 'C', .95, colors.blue);
+        createArc('c', 'C', .90, colors.blue);
         createArc('java', 'Java', .80, colors.blue);
         engineeringFlag = true;
     }
@@ -74,7 +74,7 @@ function engineering() {
 
 function software() {
     if (!softwareFlag) {
-        createArc('photoshop', 'Photoshop', 1, colors.blue);
+        createArc('photoshop', 'Photoshop', .90, colors.blue);
         createArc('adobe_xd', 'Adobe XD', .80, colors.blue);
         createArc('premier_pro', 'Premier Pro', .80, colors.blue);
         createArc('sketch', 'Sketch', .85, colors.blue);
@@ -149,8 +149,8 @@ $(function () {
   // https://github.com/mattboldt/typed.js/blob/master/README.md
   // http://jeffweisbein.com - insperation but used code above.
   $('#element').typed({
-    strings: ['Nicolas-Resume:~ nicolas$ ^1000 cat about.txt ^1000 <br>' + 'A University of Central Florida student obtaining a Bachelors Degree in Digital Media - focus in Web Design - with a minor in Computer Science. <br>' + ' My passion lies between the intersection of technology and art. <br> I enjoy both programming for web and software engineering. <br>' + ' At the same time, I also love to design what the layout or interaction for the software will ultimately be like. <br> ' + ' I continue to learn out of the classroom about both fields to refine my skills. <br>' + 'Nicolas-Resume:~ nicolas$ ^1000 ./resume.exe ^1000 <br>' + 'Loading resume'],
-    typeSpeed: 0,
+    strings: ['Nicolas-Resume:~ nicolas$ ^100 cat about.txt ^100 <br>' + 'A University of Central Florida student obtaining a Bachelors Degree in Digital Media - focus in Web Design - with a minor in Computer Science. <br>' + ' My passion lies between the intersection of technology and art. <br>' + 'Nicolas-Resume:~ nicolas$ ^1000 ./resume.exe ^100 <br>' + 'Loading resume'],
+    typeSpeed: -2,
     cursorChar: '█',
     callback: function callback() {
       loadingBar();

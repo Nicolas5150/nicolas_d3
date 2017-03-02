@@ -161,6 +161,9 @@ nav .brand-logo{
     fill: #ee4488;
 }
 
+.skills {
+	width: 70%
+}
 
 /* Resolves issue where the flexbox styling does not return after being sized up */
 @media (min-width: 901px) {
